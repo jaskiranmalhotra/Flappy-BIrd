@@ -39,4 +39,8 @@ function keyPressed()
  if(key==' '){
     bird.up();
  }   
+    
+    function testFunction() {
+        //this is a test function
+    }
 }

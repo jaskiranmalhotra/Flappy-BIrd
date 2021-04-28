@@ -1,8 +1,18 @@
 var bg;
 var bird;
 var pipes=[];
+var sound;
+
+function preload()
+{
+     bg=loadImage("./Assets/background.jpg");
+     sound=loadSound("./Assets/music.mp3");
+}
+
+
 function setup() {
-    bg=loadImage("./Assets/background.jpg");
+   
+   
     var w = window.innerWidth;
 var h = window.innerHeight;
   createCanvas(w,h);
@@ -12,13 +22,22 @@ var h = window.innerHeight;
 }
 var isStart=true;
 var x;
+
+
+
 function draw() {
+  
+    
 if(isStart==true)
 {
    
     fill(255);
      x = document.getElementById("abc");
     x.style.display = "block";
+    if(sound.isPlaying())
+        {
+            sound.stop();
+        }
     return;
 }
 x.style.display = "none";
@@ -33,6 +52,7 @@ x.style.display = "none";
                 console.log("HIT");
                 isStart=true;
                 pipes=[];
+                
                 setup();
                  
             }
@@ -55,6 +75,10 @@ x.style.display = "none";
 function onbuttonpressed(){
     isStart=false;
     console.log("hello");
+    if(sound.isPlaying()==false){
+      sound.play();
+       getAudioContext().resume();
+  }  
 }
 function keyPressed()
 {

@@ -1,14 +1,29 @@
-// comment
+var bg;
 var bird;
 var pipes=[];
 function setup() {
-  createCanvas(800,800);
+    bg=loadImage("./Assets/background.jpg");
+    var w = window.innerWidth;
+var h = window.innerHeight;
+  createCanvas(w,h);
+
    bird=new Bird();
     pipes.push(new Pipe());
 }
-
+var isStart=true;
+var x;
 function draw() {
-background(0);
+if(isStart==true)
+{
+   
+    fill(255);
+     x = document.getElementById("abc");
+    x.style.display = "block";
+    return;
+}
+x.style.display = "none";
+ background(bg);
+
     
      for(var i=pipes.length-1;i>=0;i--) {
             pipes[i].show();
@@ -16,6 +31,10 @@ background(0);
             
             if(pipes[i].hits(bird)){
                 console.log("HIT");
+                isStart=true;
+                pipes=[];
+                setup();
+                 
             }
                
             if(pipes[i].offscreen()){
@@ -33,14 +52,15 @@ background(0);
     
    
 }
-
+function onbuttonpressed(){
+    isStart=false;
+    console.log("hello");
+}
 function keyPressed()
 {
  if(key==' '){
     bird.up();
  }   
     
-    function testFunction() {
-        //this is a test function
-    }
+   
 }

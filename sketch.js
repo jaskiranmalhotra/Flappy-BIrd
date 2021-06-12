@@ -65,7 +65,7 @@ x.style.display = "none";
  bird.update();
     bird.show();   
     
-    if(frameCount% 100==0){
+    if(frameCount% 80==0){
      pipes.push(new Pipe());   
     }
   
